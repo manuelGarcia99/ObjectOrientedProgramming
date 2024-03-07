@@ -1,0 +1,21 @@
+try {
+			ObjectInputStream isAlunos = new ObjectInputStream(new FileInputStream("C:\\Users\\manec\\Desktop\\Java\\Ficha_10\\Ficha_10\\Ficha_10\\src\\Ficha_10\\alunos.dat"));
+			int ult = isAlunos.readInt();
+			Aluno.setUltimo(ult);
+
+			lst = (ArrayList<Aluno>) isAlunos.readObject();
+		} catch (IOException e) {
+			System.out.println(e.getMessage());
+		} catch (ClassNotFoundException e) {
+			System.out.println(e.getMessage());
+		}
+
+try {
+                    ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream("C:\\Users\\manec\\Desktop\\Java\\Ficha_10\\Ficha_10\\Ficha_10\\src\\Ficha_10\\alunos.dat"));
+                    // escrever o objeto livros no ficheiro
+                    os.writeInt(Aluno.getUltimo());
+                    os.writeObject(lst);
+                    os.flush(); // os dados são copiados de memória para o disco
+                } catch (IOException e) {
+                    System.out.println(e.getMessage());
+                }
